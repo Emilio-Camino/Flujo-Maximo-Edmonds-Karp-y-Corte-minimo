@@ -26,18 +26,19 @@ public class FlujoMaximoApp {
     //Probando el algoritmo de Flujo Máximo en el primer Grafo    
     int[][] capResidualDirigido = grafos.grafoDirigido.clonarMatrizAdy();
     grafos.grafoDirigido.edmondsKarp(0, 7, capResidualDirigido);
+    System.out.printf("Tiempo de Ejecucion: %.2f ms%n%n",(System.nanoTime() - tiempoDirigido)/1_000_000.0);
+    
     imprimirGrafoResidual(capResidualDirigido);
     grafos.grafoDirigido.corteMinimo(capResidualDirigido, 0);
-    System.out.printf("Tiempo de Ejecucion: %.2f ms%n%n",(System.nanoTime() - tiempoDirigido)/1_000_000.0);
     
     //Probando el algoritmo de Flujo Máximo en el segundo Grafo
     long tiempoNoDirigido = System.nanoTime();
     int[][] capResidualNoDirigido = grafos.grafoNoDirigido.clonarMatrizAdy();
     grafos.grafoNoDirigido.edmondsKarp(0, 4, capResidualNoDirigido);
-    imprimirGrafoResidual(capResidualNoDirigido);
-    grafos.grafoNoDirigido.corteMinimo(capResidualNoDirigido, 0);
     System.out.printf("Tiempo de Ejecucion: %.2f ms%n%n",(System.nanoTime() - tiempoNoDirigido)/1_000_000.0);
     
+    imprimirGrafoResidual(capResidualNoDirigido);
+    grafos.grafoNoDirigido.corteMinimo(capResidualNoDirigido, 0);
     }
     
     
